@@ -8,6 +8,7 @@ src/**/obj/
 
 web/node_modules/
 web/dist/
+.artifacts/
 
 *.user
 *.suo
