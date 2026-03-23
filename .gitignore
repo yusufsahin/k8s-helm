@@ -1,0 +1,16 @@
+.playwright-cli/
+
+.vs/
+.vscode/
+
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+
+*.user
+*.suo
+*.swp
+*.tmp
+
+docker-compose.override.yml

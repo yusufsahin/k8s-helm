@@ -1,0 +1,17 @@
+bin/
+obj/
+.vs/
+.vscode/
+
+src/**/bin/
+src/**/obj/
+
+web/node_modules/
+web/dist/
+
+*.user
+*.suo
+*.swp
+*.tmp
+
+docker-compose.override.yml

@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: notes-db
+    environment:
+      POSTGRES_DB: notesdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - notes-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d notesdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build:
+      context: ./src/Notes.Api
+    container_name: notes-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=notesdb;Username=postgres;Password=postgres
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "18081:8080"
+
+  web:
+    build:
+      context: ./web
+    container_name: notes-web
+    depends_on:
+      - api
+    ports:
+      - "18080:80"
+
+volumes:
+  notes-postgres-data:
