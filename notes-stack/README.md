@@ -31,3 +31,25 @@ API:
 ```powershell
 docker compose down
 ```
+
+## Helm Deploy Scripts
+
+Local image build:
+
+```bash
+./build_images.sh
+```
+
+Remote Helm deploy:
+
+```bash
+SSH_PASSWORD='Frs@2024!' ./deploy_helm_remote.sh
+```
+
+Varsayilanlar:
+
+- host: `192.168.106.130`
+- user: `frs`
+- release: `notes-stack`
+- namespace: `notes-stack`
+- URL: `http://192.168.106.130:30081/`
