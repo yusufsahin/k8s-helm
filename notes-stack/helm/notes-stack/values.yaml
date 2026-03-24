@@ -43,3 +43,6 @@ ingress:
   host: ""
   path: /
   pathType: Prefix
+
+access:
+  publicHost: ""

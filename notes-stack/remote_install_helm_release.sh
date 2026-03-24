@@ -52,6 +52,7 @@ helm_set_args=(
   --set "postgres.persistence.hostPath=${POSTGRES_HOST_PATH}"
   --set "ingress.className=${INGRESS_CLASS_NAME}"
   --set "ingress.path=${INGRESS_PATH}"
+  --set "access.publicHost=${PUBLIC_HOST}"
 )
 
 if [ -n "${INGRESS_HOST}" ]; then

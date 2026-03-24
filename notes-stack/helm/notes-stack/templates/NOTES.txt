@@ -2,8 +2,10 @@
 
 {{- if .Values.ingress.host }}
 Open: http://{{ .Values.ingress.host }}:30081{{ .Values.ingress.path }}
+{{- else if .Values.access.publicHost }}
+Open: http://{{ .Values.access.publicHost }}:30081{{ .Values.ingress.path }}
 {{- else }}
-Open: http://192.168.106.130:30081{{ .Values.ingress.path }}
+Open: http://<node-ip>:30081{{ .Values.ingress.path }}
 {{- end }}
 
 API debug endpoint remains internal to the cluster.
